@@ -1,8 +1,8 @@
 # GAEA2 - Group Algorithm Engineering starter
 
 Java 21+, standard library only. This is a **compilable assignment scaffold**, not
-a completed solution. All algorithms, generators, validators, searches, experiment
-loops, correctness arguments, and reflection answers are deliberately TODOs.
+a completed solution. Part 1 validation, random-array generation, and the timing runner are implemented.
+The remaining TODOs include divide-and-conquer, Part 2, and report answers.
 Unfinished entry points exit with code 2 rather than report a misleading success.
 
 ## Quick start
@@ -33,9 +33,10 @@ java -cp out common.Run all results
 ```
 
 Experiment commands gate execution on the relevant validation suite. `all` fails
-at the first unfinished step. These commands currently produce no measurements.
+at the first unfinished step. Part 1 benchmarking is blocked until DivideAndConquer is implemented.
 Use a different output directory for independent runs, e.g. `results/run-02`.
-Students implement directory creation and CSV writing within experiment runners.
+Part 1 creates a unique `inversions-*` subdirectory with raw/summary CSV, validation
+totals, and environment metadata. Part 2 output handling remains student work.
 
 ## Layout and work ownership
 
@@ -76,3 +77,22 @@ written reflection using your actual measurements, so it has no algorithm module
   numbers or prewritten analysis are included. Finite tests are not a proof.
 
 See `docs/WORK_PLAN.md` for the full completion and submission checklist.
+
+## Part 1 harness checks
+
+Validation includes 12 hand cases and 200 seeded random arrays of length 0-64.
+It checks exact counts, sorted output, preservation of values, and input immutability.
+The benchmark validates first, warms up each size, alternates algorithm order, and
+records seven trials per algorithm/size plus medians. Input preparation and output
+checks are outside timing; complete solver calls and their allocations are included.
+
+```sh
+javac --release 21 -d out "@sources.txt"
+javac --release 21 -cp out -d out tests/part1/HarnessTest.java
+java -cp out part1.HarnessTest
+```
+
+Harness tests inject a library-sort test double to exercise success and deliberate
+failure paths while the real optimized solver is unfinished. Their temporary timing
+files are synthetic test artifacts, not algorithm performance evidence. Real commands
+still fail at the optimized solver TODO until it is implemented.

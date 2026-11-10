@@ -17,7 +17,7 @@ public final class Run {
         try {
             switch (args[0]) {
                 case "validate-inversions" -> part1.Validation.run();
-                case "benchmark-inversions" -> { part1.Validation.run(); part1.RuntimeExperiment.run(output); }
+                case "benchmark-inversions" -> part1.RuntimeExperiment.run(output);
                 case "validate-coins" -> part2.Validation.run();
                 case "search-greedy" -> { part2.Validation.run(); part2.CounterexampleSearch.run(output); }
                 case "memoization" -> { part2.Validation.run(); part2.MemoizationExperiment.run(output); }
