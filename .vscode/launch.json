@@ -1,0 +1,85 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "GAEA2: help",
+      "request": "launch",
+      "mainClass": "common.Run",
+      "args": "help",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build GAEA2",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "GAEA2: validate-inversions",
+      "request": "launch",
+      "mainClass": "common.Run",
+      "args": "validate-inversions",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build GAEA2",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "GAEA2: benchmark-inversions",
+      "request": "launch",
+      "mainClass": "common.Run",
+      "args": "benchmark-inversions",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build GAEA2",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "GAEA2: validate-coins",
+      "request": "launch",
+      "mainClass": "common.Run",
+      "args": "validate-coins",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build GAEA2",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "GAEA2: search-greedy",
+      "request": "launch",
+      "mainClass": "common.Run",
+      "args": "search-greedy",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build GAEA2",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "GAEA2: memoization",
+      "request": "launch",
+      "mainClass": "common.Run",
+      "args": "memoization",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build GAEA2",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "GAEA2: pseudo-polynomial",
+      "request": "launch",
+      "mainClass": "common.Run",
+      "args": "pseudo-polynomial",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build GAEA2",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "GAEA2: all",
+      "request": "launch",
+      "mainClass": "common.Run",
+      "args": "all",
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Build GAEA2",
+      "console": "integratedTerminal"
+    }
+  ]
+}
