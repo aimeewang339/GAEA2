@@ -1,14 +1,23 @@
 package part2;
-import common.Unfinished;
 
 public final class SolutionValidator {
     private SolutionValidator() {}
     public static void validate(int[] denominations, int target, CoinResult result) {
-        // TODO: For Solution, independently check nonnegative count, count == list
-        // size, every chosen coin belongs to D, and sum == target (use a long sum).
-        // Reject invalid output with AssertionError. Never call solver reconstruction.
-        // IMPOSSIBLE cannot be justified by a sum check; establish via exact solvers
-        // and independently derived hand-case expectations in Validation.
-        throw new Unfinished("Part 2B: independent solution validator");
+        // Feasibility of IMPOSSIBLE is checked separately against exact solvers.
+        if (result == CoinResult.IMPOSSIBLE) return;
+        if (!(result instanceof CoinResult.Solution solution))
+            throw new AssertionError("Null or unknown solution");
+        if (solution.coinCount() < 0 || solution.coinCount() != solution.chosenCoins().size())
+            throw new AssertionError("Count does not match coin list");
+        long sum = 0;
+        for (int coin : solution.chosenCoins()) {
+            boolean found = false;
+            for (int denomination : denominations) {
+                if (coin == denomination) found = true;
+            }
+            if (!found || coin <= 0) throw new AssertionError("Invalid chosen coin: " + coin);
+            sum += coin;
+        }
+        if (sum != target) throw new AssertionError("Expected sum=" + target + ", actual=" + sum);
     }
 }

@@ -15,3 +15,5 @@ TODO (group): record any later AI tools/prompts and the specific assistance rece
 TODO (group): explain independent validation actually performed, including hand
 derivations, baseline comparisons, reconstruction checks, review, and experiment audits.
 TODO (group): verify all generated interfaces, comments, schemas, and requirement mappings.
+
+OpenAI Codex implemented Part 2B's hand/random validation, independent solution checker, and automated greedy counterexample search. It ran 10 hand cases, 100 seeded random cases, and 252 search cases, and drafted report/PART2B.md from the resulting output. The group should independently review the hand derivations and recorded evidence.
