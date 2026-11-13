@@ -53,7 +53,7 @@ public final class DivideAndConquer {
             temp[k++] = arr[i++];
         }
 
-        while(i <= right) {
+        while(j <= right) {
             temp[k++] = arr[j++];
         }
 

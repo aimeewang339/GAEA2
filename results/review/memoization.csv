@@ -1,0 +1,15 @@
+solver,target,recursive_calls,distinct_states,cache_hits,runtime_ns,status
+naive,0,1,1,0,10600,OK
+memoized,0,1,1,0,10600,OK
+naive,3,5,4,0,5500,OK
+memoized,3,5,4,1,2600,OK
+naive,6,24,7,0,3000,OK
+memoized,6,14,7,7,1600,OK
+naive,9,104,10,0,6400,OK
+memoized,9,23,10,13,1600,OK
+naive,12,441,13,0,23000,OK
+memoized,12,32,13,19,2400,OK
+naive,15,1869,16,0,99800,OK
+memoized,15,41,16,25,4200,OK
+naive,18,7920,19,0,200200,OK
+memoized,18,50,19,31,1800,OK

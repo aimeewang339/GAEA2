@@ -9,7 +9,7 @@ public final class Run {
             System.out.println("Usage: java -cp out common.Run TASK [results-directory]");
             System.out.println("Tasks: validate-inversions, benchmark-inversions, validate-coins,");
             System.out.println("       search-greedy, memoization, pseudo-polynomial, all");
-            System.out.println("Student TODOs exit with code 2; no results exist yet.");
+            System.out.println("Run all to validate both parts and write experiment CSV files.");
             return;
         }
         if (args.length > 2) throw new IllegalArgumentException("Expected TASK [results-directory]");

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.ToLongFunction;
 
@@ -125,8 +124,6 @@ public final class RuntimeExperiment {
                 + "- CPU: " + System.getenv().getOrDefault("PROCESSOR_IDENTIFIER", "record CPU model manually")
                 + "; logical processors=" + Runtime.getRuntime().availableProcessors() + "\n"
                 + "- Command: " + System.getProperty("sun.java.command", "unknown") + "\n"
-                + "- Git commit: " + git("rev-parse", "HEAD").strip() + "\n"
-                + "- Git status (empty means clean):\n```text\n" + git("status", "--short") + "\n```\n"
                 + "- Seed: " + ExperimentConfig.SEED + "; family: uniform random permutations of 0..n-1\n"
                 + "- Sizes: " + Arrays.toString(ExperimentConfig.INVERSION_SIZES) + "\n"
                 + "- Warmups per size: " + ExperimentConfig.WARMUP_REPETITIONS
@@ -139,31 +136,5 @@ public final class RuntimeExperiment {
                 + "- checks_passed in validation.csv counts complete passing cases, not individual assertions.\n"
                 + "- Plot summary n versus median_ns grouped by algorithm; retain raw trials.\n"
                 + "- Interpret crossover from measured medians; short runs and JVM noise limit precision.\n";
-    }
-
-    private static String git(String... arguments) {
-        List<String> command = new ArrayList<>(List.of("git"));
-        command.addAll(List.of(arguments));
-        try {
-            Process process = new ProcessBuilder(command).redirectErrorStream(true).start();
-            // Drain output concurrently so a large status cannot fill the pipe.
-            var output = new java.io.ByteArrayOutputStream();
-            Thread reader = Thread.startVirtualThread(() -> {
-                try (var stream = process.getInputStream()) { stream.transferTo(output); }
-                catch (java.io.IOException ignored) { /* Main thread records process failure. */ }
-            });
-            if (!process.waitFor(5, TimeUnit.SECONDS)) {
-                process.destroyForcibly();
-                return "unavailable (git timed out); record manually";
-            }
-            reader.join();
-            return process.exitValue() == 0 ? output.toString(StandardCharsets.UTF_8)
-                    : "unavailable; record manually";
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            return "unavailable (interrupted); record manually";
-        } catch (java.io.IOException e) {
-            return "unavailable; record manually";
-        }
     }
 }

@@ -45,13 +45,15 @@ public final class MemoizationExperiment {
                         result = new Memoized().solve(coins, target, m);
                     }
 
-                    verify(coins, target, result);
+
 
                 } catch (SearchLimitExceeded e) {
                     status = "CUTOFF";
                 }
 
                 long elapsed = System.nanoTime() - start;
+
+                if (status.equals("OK")) verify(coins, target, result);
 
                 lines.add(
                     name + "," + target + "," + m.recursiveCalls

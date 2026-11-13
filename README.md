@@ -1,9 +1,7 @@
 # GAEA2 - Group Algorithm Engineering starter
 
-Java 21+, standard library only. This is a **compilable assignment scaffold**, not
-a completed solution. Part 1 validation, random-array generation, and the timing runner are implemented.
-The remaining TODOs include divide-and-conquer, Part 2, and report answers.
-Unfinished entry points exit with code 2 rather than report a misleading success.
+Java 21+, standard library only. Both algorithm suites and experiment commands are implemented.
+The report and contribution files must be completed before submission.
 
 ## Quick start
 
@@ -20,7 +18,7 @@ When adding Java files, add their paths to `sources.txt`. No Maven/Gradle or ext
 dependencies are required. VS Code Java source/output paths and build/run tasks
 are included; use the Java extension's debugger or the supplied tasks.
 
-## Reproduction commands (complete the TODOs first)
+## Reproduction commands
 
 ```sh
 java -cp out common.Run validate-inversions
@@ -32,11 +30,11 @@ java -cp out common.Run pseudo-polynomial results
 java -cp out common.Run all results
 ```
 
-Experiment commands gate execution on the relevant validation suite. `all` fails
-at the first unfinished step. Part 1 benchmarking is blocked until DivideAndConquer is implemented.
+Experiment commands gate execution on the relevant validation suite.
 Use a different output directory for independent runs, e.g. `results/run-02`.
 Part 1 creates a unique `inversions-*` subdirectory with raw/summary CSV, validation
-totals, and environment metadata. Part 2 output handling remains student work.
+totals, and environment metadata. Part 2 writes greedy_counterexamples.csv, part2b_validation.csv, memoization.csv,
+pseudo_polynomial_raw.csv, and pseudo_polynomial_summary.csv.
 
 ## Layout and work ownership
 
@@ -93,6 +91,5 @@ java -cp out part1.HarnessTest
 ```
 
 Harness tests inject a library-sort test double to exercise success and deliberate
-failure paths while the real optimized solver is unfinished. Their temporary timing
-files are synthetic test artifacts, not algorithm performance evidence. Real commands
-still fail at the optimized solver TODO until it is implemented.
+failure paths. Their temporary timing files are synthetic test artifacts.
+Use common.Run all for real solver validation and experiments.
